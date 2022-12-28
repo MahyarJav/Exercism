@@ -14,8 +14,6 @@ def round_scores(student_scores):
         new_list.append(rounded)
     return new_list
 
-    pass
-
 
 def count_failed_students(student_scores):
     """Count the number of failing students out of the group provided.
@@ -28,7 +26,6 @@ def count_failed_students(student_scores):
         if score <= 40:
             fail_count += 1
     return fail_count
-    pass
 
 
 def above_threshold(student_scores, threshold):
@@ -43,7 +40,6 @@ def above_threshold(student_scores, threshold):
         if score >= threshold:
             threshold_scores.append(score)
     return threshold_scores
-    pass
 
 
 def letter_grades(highest):
@@ -59,9 +55,11 @@ def letter_grades(highest):
             71 <= "B" <= 85
             86 <= "A" <= 100
     """
-
-    pass
-
+    score_list = []
+    score_inc = round((highest-40) / 4)
+    for count in range(0, 4):
+        score_list.append(int(41 + score_inc * count))
+    return score_list
 
 def student_ranking(student_scores, student_names):
     """Organize the student's rank, name, and grade information in ascending order.
@@ -70,15 +68,23 @@ def student_ranking(student_scores, student_names):
     :param student_names: list - of string names by exam score in descending order.
     :return: list - of strings in format ["<rank>. <student name>: <score>"].
     """
-
-    pass
+    rankings = []
+    for rank, score in enumerate(student_scores):
+        rankings.append(f"{rank+1}. {student_names[rank]}: {score}")
+    return rankings
 
 
 def perfect_score(student_info):
+
     """Create a list that contains the name and grade of the first student to make a perfect score on the exam.
 
     :param student_info: list - of [<student name>, <score>] lists.
     :return: list - first `[<student name>, 100]` or `[]` if no student score of 100 is found.
     """
-
-    pass
+    perfect = []
+    for name, score in student_info:
+        if score == 100:
+            perfect.append(name)
+            perfect.append(score)
+            break
+    return perfect
