@@ -1,3 +1,3 @@
 fun hello(): String {
-    return "Hellos, World!"
+    return "Hello, World!"
 }
